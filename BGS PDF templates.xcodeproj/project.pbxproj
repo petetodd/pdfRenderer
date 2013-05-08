@@ -19,6 +19,10 @@
 		D07FDC9B173A8AE700AE83C8 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D07FDC99173A8AE700AE83C8 /* MainStoryboard_iPhone.storyboard */; };
 		D07FDC9E173A8AE700AE83C8 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D07FDC9C173A8AE700AE83C8 /* MainStoryboard_iPad.storyboard */; };
 		D07FDCA1173A8AE700AE83C8 /* BGSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FDCA0173A8AE700AE83C8 /* BGSViewController.m */; };
+		D07FDCAB173AA22800AE83C8 /* BGSOutputTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FDCAA173AA22800AE83C8 /* BGSOutputTVC.m */; };
+		D07FDCB0173AA76C00AE83C8 /* BGSRenderModel1PDF.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FDCAF173AA76C00AE83C8 /* BGSRenderModel1PDF.m */; };
+		D07FDCB2173AAB1300AE83C8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07FDCB1173AAB1300AE83C8 /* CoreText.framework */; };
+		D07FDCB4173AAB1F00AE83C8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07FDCB3173AAB1F00AE83C8 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +41,14 @@
 		D07FDC97173A8AE700AE83C8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D07FDC9A173A8AE700AE83C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		D07FDC9D173A8AE700AE83C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		D07FDC9F173A8AE700AE83C8 /* BGSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGSViewController.h; sourceTree = "<group>"; };
-		D07FDCA0173A8AE700AE83C8 /* BGSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGSViewController.m; sourceTree = "<group>"; };
+		D07FDC9F173A8AE700AE83C8 /* BGSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BGSViewController.h; path = "BGS PDF templates/BGSViewController.h"; sourceTree = "<group>"; };
+		D07FDCA0173A8AE700AE83C8 /* BGSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BGSViewController.m; path = "BGS PDF templates/BGSViewController.m"; sourceTree = "<group>"; };
+		D07FDCA9173AA22800AE83C8 /* BGSOutputTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGSOutputTVC.h; sourceTree = "<group>"; };
+		D07FDCAA173AA22800AE83C8 /* BGSOutputTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGSOutputTVC.m; sourceTree = "<group>"; };
+		D07FDCAE173AA76C00AE83C8 /* BGSRenderModel1PDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGSRenderModel1PDF.h; sourceTree = "<group>"; };
+		D07FDCAF173AA76C00AE83C8 /* BGSRenderModel1PDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGSRenderModel1PDF.m; sourceTree = "<group>"; };
+		D07FDCB1173AAB1300AE83C8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		D07FDCB3173AAB1F00AE83C8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07FDCB4173AAB1F00AE83C8 /* MessageUI.framework in Frameworks */,
+				D07FDCB2173AAB1300AE83C8 /* CoreText.framework in Frameworks */,
 				D07FDC82173A8AE700AE83C8 /* UIKit.framework in Frameworks */,
 				D07FDC84173A8AE700AE83C8 /* Foundation.framework in Frameworks */,
 				D07FDC86173A8AE700AE83C8 /* CoreGraphics.framework in Frameworks */,
@@ -58,6 +70,12 @@
 		D07FDC75173A8AE700AE83C8 = {
 			isa = PBXGroup;
 			children = (
+				D07FDCB3173AAB1F00AE83C8 /* MessageUI.framework */,
+				D07FDCB1173AAB1300AE83C8 /* CoreText.framework */,
+				D07FDCAD173AA72F00AE83C8 /* Renderers */,
+				D07FDCAC173AA62700AE83C8 /* Document Models */,
+				D07FDCA8173A8D6900AE83C8 /* GUI */,
+				D07FDCA7173A8BF200AE83C8 /* StoryBoards */,
 				D07FDC87173A8AE700AE83C8 /* BGS PDF templates */,
 				D07FDC80173A8AE700AE83C8 /* Frameworks */,
 				D07FDC7F173A8AE700AE83C8 /* Products */,
@@ -87,10 +105,6 @@
 			children = (
 				D07FDC90173A8AE700AE83C8 /* BGSAppDelegate.h */,
 				D07FDC91173A8AE700AE83C8 /* BGSAppDelegate.m */,
-				D07FDC99173A8AE700AE83C8 /* MainStoryboard_iPhone.storyboard */,
-				D07FDC9C173A8AE700AE83C8 /* MainStoryboard_iPad.storyboard */,
-				D07FDC9F173A8AE700AE83C8 /* BGSViewController.h */,
-				D07FDCA0173A8AE700AE83C8 /* BGSViewController.m */,
 				D07FDC88173A8AE700AE83C8 /* Supporting Files */,
 			);
 			path = "BGS PDF templates";
@@ -108,6 +122,42 @@
 				D07FDC97173A8AE700AE83C8 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D07FDCA7173A8BF200AE83C8 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				D07FDC99173A8AE700AE83C8 /* MainStoryboard_iPhone.storyboard */,
+				D07FDC9C173A8AE700AE83C8 /* MainStoryboard_iPad.storyboard */,
+			);
+			name = StoryBoards;
+			sourceTree = "<group>";
+		};
+		D07FDCA8173A8D6900AE83C8 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				D07FDC9F173A8AE700AE83C8 /* BGSViewController.h */,
+				D07FDCA0173A8AE700AE83C8 /* BGSViewController.m */,
+				D07FDCA9173AA22800AE83C8 /* BGSOutputTVC.h */,
+				D07FDCAA173AA22800AE83C8 /* BGSOutputTVC.m */,
+			);
+			name = GUI;
+			sourceTree = "<group>";
+		};
+		D07FDCAC173AA62700AE83C8 /* Document Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Document Models";
+			sourceTree = "<group>";
+		};
+		D07FDCAD173AA72F00AE83C8 /* Renderers */ = {
+			isa = PBXGroup;
+			children = (
+				D07FDCAE173AA76C00AE83C8 /* BGSRenderModel1PDF.h */,
+				D07FDCAF173AA76C00AE83C8 /* BGSRenderModel1PDF.m */,
+			);
+			name = Renderers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +231,8 @@
 				D07FDC8E173A8AE700AE83C8 /* main.m in Sources */,
 				D07FDC92173A8AE700AE83C8 /* BGSAppDelegate.m in Sources */,
 				D07FDCA1173A8AE700AE83C8 /* BGSViewController.m in Sources */,
+				D07FDCAB173AA22800AE83C8 /* BGSOutputTVC.m in Sources */,
+				D07FDCB0173AA76C00AE83C8 /* BGSRenderModel1PDF.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +253,7 @@
 				D07FDC9A173A8AE700AE83C8 /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
+			path = "BGS PDF templates";
 			sourceTree = "<group>";
 		};
 		D07FDC9C173A8AE700AE83C8 /* MainStoryboard_iPad.storyboard */ = {
@@ -209,6 +262,7 @@
 				D07FDC9D173A8AE700AE83C8 /* en */,
 			);
 			name = MainStoryboard_iPad.storyboard;
+			path = "BGS PDF templates";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
