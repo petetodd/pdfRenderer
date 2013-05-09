@@ -23,10 +23,28 @@
 		D07FDCB0173AA76C00AE83C8 /* BGSRenderModel1PDF.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FDCAF173AA76C00AE83C8 /* BGSRenderModel1PDF.m */; };
 		D07FDCB2173AAB1300AE83C8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07FDCB1173AAB1300AE83C8 /* CoreText.framework */; };
 		D07FDCB4173AAB1F00AE83C8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07FDCB3173AAB1F00AE83C8 /* MessageUI.framework */; };
+		D0EDF127173BA1530041AF56 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF115173BA1530041AF56 /* Default@2x.png */; };
+		D0EDF128173BA1530041AF56 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF116173BA1530041AF56 /* Default.png */; };
+		D0EDF129173BA1530041AF56 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF117173BA1530041AF56 /* Default-568h@2x.png */; };
+		D0EDF12A173BA1530041AF56 /* iTunesArtWorkFlat.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF118173BA1530041AF56 /* iTunesArtWorkFlat.png */; };
+		D0EDF12B173BA1530041AF56 /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF119173BA1530041AF56 /* Default-Portrait@2x.png */; };
+		D0EDF12C173BA1530041AF56 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF11A173BA1530041AF56 /* Default-Landscape.png */; };
+		D0EDF12D173BA1530041AF56 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF11B173BA1530041AF56 /* Default-Portrait.png */; };
+		D0EDF12E173BA1530041AF56 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF11C173BA1530041AF56 /* Default-Landscape@2x.png */; };
+		D0EDF12F173BA1530041AF56 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF11D173BA1530041AF56 /* Icon-100.png */; };
+		D0EDF130173BA1530041AF56 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF11E173BA1530041AF56 /* Icon-Small.png */; };
+		D0EDF131173BA1530041AF56 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF11F173BA1530041AF56 /* iTunesArtwork@2x.png */; };
+		D0EDF132173BA1530041AF56 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF120173BA1530041AF56 /* Icon-Small-50.png */; };
+		D0EDF133173BA1530041AF56 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF121173BA1530041AF56 /* Icon-72.png */; };
+		D0EDF134173BA1530041AF56 /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF122173BA1530041AF56 /* Icon-144.png */; };
+		D0EDF135173BA1530041AF56 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF123173BA1530041AF56 /* Icon-Small@2x.png */; };
+		D0EDF136173BA1530041AF56 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF124173BA1530041AF56 /* Icon.png */; };
+		D0EDF137173BA1530041AF56 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF125173BA1530041AF56 /* Icon@2x.png */; };
+		D0EDF138173BA1530041AF56 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EDF126173BA1530041AF56 /* iTunesArtwork.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D07FDC7E173A8AE700AE83C8 /* BGS PDF templates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BGS PDF templates.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D07FDC7E173A8AE700AE83C8 /* PDF DOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PDF DOC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07FDC81173A8AE700AE83C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D07FDC83173A8AE700AE83C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D07FDC85173A8AE700AE83C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -49,6 +67,24 @@
 		D07FDCAF173AA76C00AE83C8 /* BGSRenderModel1PDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGSRenderModel1PDF.m; sourceTree = "<group>"; };
 		D07FDCB1173AAB1300AE83C8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		D07FDCB3173AAB1F00AE83C8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		D0EDF115173BA1530041AF56 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D0EDF116173BA1530041AF56 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		D0EDF117173BA1530041AF56 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D0EDF118173BA1530041AF56 /* iTunesArtWorkFlat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtWorkFlat.png; sourceTree = "<group>"; };
+		D0EDF119173BA1530041AF56 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
+		D0EDF11A173BA1530041AF56 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
+		D0EDF11B173BA1530041AF56 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
+		D0EDF11C173BA1530041AF56 /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
+		D0EDF11D173BA1530041AF56 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
+		D0EDF11E173BA1530041AF56 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		D0EDF11F173BA1530041AF56 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		D0EDF120173BA1530041AF56 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		D0EDF121173BA1530041AF56 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		D0EDF122173BA1530041AF56 /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144.png"; sourceTree = "<group>"; };
+		D0EDF123173BA1530041AF56 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		D0EDF124173BA1530041AF56 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		D0EDF125173BA1530041AF56 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		D0EDF126173BA1530041AF56 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +106,7 @@
 		D07FDC75173A8AE700AE83C8 = {
 			isa = PBXGroup;
 			children = (
+				D0EDF083173B9C210041AF56 /* Media */,
 				D07FDCB3173AAB1F00AE83C8 /* MessageUI.framework */,
 				D07FDCB1173AAB1300AE83C8 /* CoreText.framework */,
 				D07FDCAD173AA72F00AE83C8 /* Renderers */,
@@ -85,7 +122,7 @@
 		D07FDC7F173A8AE700AE83C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D07FDC7E173A8AE700AE83C8 /* BGS PDF templates.app */,
+				D07FDC7E173A8AE700AE83C8 /* PDF DOC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,6 +197,39 @@
 			name = Renderers;
 			sourceTree = "<group>";
 		};
+		D0EDF083173B9C210041AF56 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				D0EDF084173B9C680041AF56 /* Launch Images */,
+			);
+			name = Media;
+			sourceTree = "<group>";
+		};
+		D0EDF084173B9C680041AF56 /* Launch Images */ = {
+			isa = PBXGroup;
+			children = (
+				D0EDF115173BA1530041AF56 /* Default@2x.png */,
+				D0EDF116173BA1530041AF56 /* Default.png */,
+				D0EDF117173BA1530041AF56 /* Default-568h@2x.png */,
+				D0EDF118173BA1530041AF56 /* iTunesArtWorkFlat.png */,
+				D0EDF119173BA1530041AF56 /* Default-Portrait@2x.png */,
+				D0EDF11A173BA1530041AF56 /* Default-Landscape.png */,
+				D0EDF11B173BA1530041AF56 /* Default-Portrait.png */,
+				D0EDF11C173BA1530041AF56 /* Default-Landscape@2x.png */,
+				D0EDF11D173BA1530041AF56 /* Icon-100.png */,
+				D0EDF11E173BA1530041AF56 /* Icon-Small.png */,
+				D0EDF11F173BA1530041AF56 /* iTunesArtwork@2x.png */,
+				D0EDF120173BA1530041AF56 /* Icon-Small-50.png */,
+				D0EDF121173BA1530041AF56 /* Icon-72.png */,
+				D0EDF122173BA1530041AF56 /* Icon-144.png */,
+				D0EDF123173BA1530041AF56 /* Icon-Small@2x.png */,
+				D0EDF124173BA1530041AF56 /* Icon.png */,
+				D0EDF125173BA1530041AF56 /* Icon@2x.png */,
+				D0EDF126173BA1530041AF56 /* iTunesArtwork.png */,
+			);
+			name = "Launch Images";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,7 +247,7 @@
 			);
 			name = "BGS PDF templates";
 			productName = "BGS PDF templates";
-			productReference = D07FDC7E173A8AE700AE83C8 /* BGS PDF templates.app */;
+			productReference = D07FDC7E173A8AE700AE83C8 /* PDF DOC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -218,6 +288,24 @@
 				D07FDC98173A8AE700AE83C8 /* Default-568h@2x.png in Resources */,
 				D07FDC9B173A8AE700AE83C8 /* MainStoryboard_iPhone.storyboard in Resources */,
 				D07FDC9E173A8AE700AE83C8 /* MainStoryboard_iPad.storyboard in Resources */,
+				D0EDF127173BA1530041AF56 /* Default@2x.png in Resources */,
+				D0EDF128173BA1530041AF56 /* Default.png in Resources */,
+				D0EDF129173BA1530041AF56 /* Default-568h@2x.png in Resources */,
+				D0EDF12A173BA1530041AF56 /* iTunesArtWorkFlat.png in Resources */,
+				D0EDF12B173BA1530041AF56 /* Default-Portrait@2x.png in Resources */,
+				D0EDF12C173BA1530041AF56 /* Default-Landscape.png in Resources */,
+				D0EDF12D173BA1530041AF56 /* Default-Portrait.png in Resources */,
+				D0EDF12E173BA1530041AF56 /* Default-Landscape@2x.png in Resources */,
+				D0EDF12F173BA1530041AF56 /* Icon-100.png in Resources */,
+				D0EDF130173BA1530041AF56 /* Icon-Small.png in Resources */,
+				D0EDF131173BA1530041AF56 /* iTunesArtwork@2x.png in Resources */,
+				D0EDF132173BA1530041AF56 /* Icon-Small-50.png in Resources */,
+				D0EDF133173BA1530041AF56 /* Icon-72.png in Resources */,
+				D0EDF134173BA1530041AF56 /* Icon-144.png in Resources */,
+				D0EDF135173BA1530041AF56 /* Icon-Small@2x.png in Resources */,
+				D0EDF136173BA1530041AF56 /* Icon.png in Resources */,
+				D0EDF137173BA1530041AF56 /* Icon@2x.png in Resources */,
+				D0EDF138173BA1530041AF56 /* iTunesArtwork.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +420,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BGS PDF templates/BGS PDF templates-Prefix.pch";
 				INFOPLIST_FILE = "BGS PDF templates/BGS PDF templates-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "PDF DOC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -343,7 +431,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BGS PDF templates/BGS PDF templates-Prefix.pch";
 				INFOPLIST_FILE = "BGS PDF templates/BGS PDF templates-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "PDF DOC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -367,6 +455,7 @@
 				D07FDCA6173A8AE700AE83C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
