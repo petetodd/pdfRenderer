@@ -18,6 +18,8 @@
 @property (strong, nonatomic) UIDocument * doc;
 
 
+@property CGRect framePage;
+
 
 @property CGRect frameRectTitle;
 @property CGRect frameRectSubTitle;

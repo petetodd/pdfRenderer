@@ -10,6 +10,9 @@
 
 @implementation BGSRenderModel1PDF{
     NSMutableDictionary * _generalSummaryItems;
+    int _yOffSetPage1Header;
+    int _yOffSetPage1Footer;
+
 }
 
 -(void)configureDataObjects{
@@ -20,9 +23,8 @@
 }
 
 - (NSURL*)drawReport:(NSString*)aFilename
-//This creates a simple screen shot.  But, it will only print what is visible visible.
 {
-    // Creates a mutable data object for updating with binary data, like a byte array
+    // Creates a mutable data object for updating with binary data
     NSMutableData *pdfData = [NSMutableData data];
     
     // Create the PDF context using the default page size of 612 x 792.
@@ -34,8 +36,18 @@
     // Get the graphics context.
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     
-    [self reportTitle];
-    [self reportSubTitle];
+    // Add a frame around the page
+    [self pageFrame];
+    
+    // Add a title section at the top of Page 1 - this will be used for logos
+    [self page1Title];
+    
+    // Add a page 1 footer
+    [self page1Footer];
+    
+    
+ //   [self reportTitle];
+  //  [self reportSubTitle];
     
     // Put the text matrix into a known state. This ensures
     // that no old scaling factors are left in place.
@@ -45,7 +57,7 @@
     // the current transform prior to drawing the invoice line.
     // CGContextTranslateCTM(currentContext, 0, 90);
     // CGContextScaleCTM(currentContext, 1.0, -1.0);
-    [self reportDetailLines];
+  //  [self reportDetailLines];
     
     //create a final footer
     //  [self invoiceFooter:@"FINAL" pageNbr:1];
@@ -70,6 +82,67 @@
     return self.fileToPrint;
     
 }
+
+// Create a page frame - setting the line width color etc.
+
+- (void)pageFrame{
+    // Get the graphics context.
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    // Set the frame line thickness and color
+    CGContextBeginPath(currentContext);
+    CGContextSetLineWidth(currentContext, 0.5);
+    CGContextSetStrokeColorWithColor(currentContext, [UIColor lightGrayColor].CGColor);
+    // Create the frame rect - 5 pixel margin
+    self.framePage = CGRectMake(5, 5, 607, 787);
+    // Draw the rectangle
+    CGContextMoveToPoint(currentContext, self.framePage.origin.x, self.framePage.origin.y);
+    CGContextAddLineToPoint(currentContext, self.framePage.size.width, self.framePage.origin.y);
+    CGContextAddLineToPoint(currentContext, self.framePage.size.width, self.framePage.size.height);
+    CGContextAddLineToPoint(currentContext, self.framePage.origin.x, self.framePage.size.height);
+    CGContextAddLineToPoint(currentContext, self.framePage.origin.x,self.framePage.origin.y);
+    // CGContextStrokePath also clears path after drawing
+    CGContextStrokePath(currentContext);   
+}
+
+// Create a page 1 title frame
+// This will be a fixed area used for logos and company info
+- (void)page1Title{
+    // Set the height of the image area
+    _yOffSetPage1Header = 150;
+    // Get the graphics context.
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    // Set the frame line thickness and color
+    CGContextBeginPath(currentContext);
+    CGContextSetLineWidth(currentContext, 0.5);
+    CGContextSetStrokeColorWithColor(currentContext, [UIColor lightGrayColor].CGColor);
+    // Create the frame rect - 5 pixel margin
+    // Draw a line
+    CGContextMoveToPoint(currentContext, self.framePage.origin.x, (self.framePage.origin.y + _yOffSetPage1Header));
+    CGContextAddLineToPoint(currentContext, self.framePage.size.width, (self.framePage.origin.y + _yOffSetPage1Header));
+    // CGContextStrokePath also clears path after drawing
+    CGContextStrokePath(currentContext);
+}
+
+// Create a page 1 footer frame
+// This will be a fixed area used for further details : contact email, www etc.
+- (void)page1Footer{
+    // Set the height of the image area
+    _yOffSetPage1Footer = 150;
+    // Get the graphics context.
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    // Set the frame line thickness and color
+    CGContextBeginPath(currentContext);
+    CGContextSetLineWidth(currentContext, 0.5);
+    CGContextSetStrokeColorWithColor(currentContext, [UIColor greenColor].CGColor);
+    // Create the frame rect - 5 pixel margin
+    // Draw a line
+    CGContextMoveToPoint(currentContext, self.framePage.origin.x, (self.framePage.origin.y +  self.framePage.size.height - _yOffSetPage1Footer));
+    CGContextAddLineToPoint(currentContext, self.framePage.size.width, (self.framePage.origin.y +  self.framePage.size.height - _yOffSetPage1Footer));
+    // CGContextStrokePath also clears path after drawing
+    CGContextStrokePath(currentContext);
+}
+
+
 
 /*
  Create a title including Inventory date, type, Tenants present, property
