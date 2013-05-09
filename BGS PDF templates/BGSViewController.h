@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BGSDocumentProperty.h"
+#import "BGSDocumentInventory.h"
 // Print and Email selector
 #import "BGSOutputTVC.h"
 
@@ -27,10 +29,10 @@
 @property (strong, nonatomic) UIBarButtonItem *printButton;
 
 // Document(s) to print
-// @property (strong, nonatomic) BGSDocumentInventory * doc;
-// For demo use a plain UIDoc
-@property (strong, nonatomic) UIDocument * doc;
-@property (strong, nonatomic) UIDocument * docAsset;
+// docAsset contains header information that we want to print
+@property (strong, nonatomic) BGSDocumentProperty * docAsset;
+// docDetails contains multiple page detail information that we want to print including variable length text
+@property (strong, nonatomic) BGSDocumentInventory * docDetail;
 
 
 - (IBAction)outputAction:(id)sender;

@@ -8,14 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreText/CoreText.h>
+#import "BGSDocumentProperty.h"
+#import "BGSDocumentInventory.h"
 
 @interface BGSRenderModel1PDF : NSObject
 
 - (NSURL*)drawReport:(NSString*)aFilename;
 
 @property (strong, nonatomic) NSURL *fileToPrint;
-@property (strong, nonatomic) UIDocument * docAsset;
-@property (strong, nonatomic) UIDocument * doc;
+// docAsset contains header information that we want to print
+@property (strong, nonatomic) BGSDocumentProperty * docAsset;
+// docDetails contains multiple page detail information that we want to print including variable length text
+@property (strong, nonatomic) BGSDocumentInventory * docDetail;
 
 
 @property CGRect framePage;

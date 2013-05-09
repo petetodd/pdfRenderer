@@ -12,6 +12,7 @@
     NSMutableDictionary * _generalSummaryItems;
     int _yOffSetPage1Header;
     int _yOffSetPage1Footer;
+    int _yOffSet;
 
 }
 
@@ -36,16 +37,8 @@
     // Get the graphics context.
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     
-    // Add a frame around the page
-    [self pageFrame];
-    
-    // Add a title section at the top of Page 1 - this will be used for logos
-    [self page1Title];
-    
-    // Add a page 1 footer
-    [self page1Footer];
-    
-    
+    [self page1Setup];
+   
  //   [self reportTitle];
   //  [self reportSubTitle];
     
@@ -80,6 +73,23 @@
     [pdfData writeToURL:self.fileToPrint atomically:YES];
     
     return self.fileToPrint;
+    
+}
+
+- (void)page1Setup{
+    // Add a frame around the page
+    [self pageFrame];
+    
+    // Add a title section at the top of Page 1 - this will be used for logos
+    [self page1Title];
+
+    // Add a page 1 footer
+    [self page1Footer];
+    
+    
+    // Populate the Page 1 center frame (area between header and footer)
+    [self page1Body];
+    
     
 }
 
@@ -142,6 +152,34 @@
     CGContextStrokePath(currentContext);
 }
 
+- (void)page1Body{
+    // Report Reference
+    CGRect rectTitleRef = CGRectMake((self.framePage.origin.x +3),(self.framePage.origin.y + _yOffSetPage1Header + 25), 300, 22);
+    NSString* reportRef = @"Report Reference: ";
+    if([self.docAsset  propertyReference]){
+        reportRef = [reportRef stringByAppendingString:[self.docAsset  propertyReference]];
+    }
+    [self drawText:reportRef inFrame:rectTitleRef formatOption:@"H1" ];
+    
+    // Report Detail Reference
+    CGRect rectDetailRef = CGRectMake((self.framePage.origin.x +3),(rectTitleRef.origin.y + 25), 300, 22);
+    NSString* detailRef = @"Report Detail Ref: ";
+    if([self.docDetail  inventoryReference]){
+        detailRef = [detailRef stringByAppendingString:[self.docDetail  inventoryReference]];
+    }
+    [self drawText:detailRef inFrame:rectDetailRef formatOption:@"H1" ];
+    
+    // Report Date
+    CGRect rectDateReport = CGRectMake((self.framePage.origin.x +403),(self.framePage.origin.y + _yOffSetPage1Header + 25), 200, 22);
+    
+    NSString* reportDate = @"Report Date: ";
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"dd MMMM yyyy"];
+    NSString *reportDateStr = [dateFormat stringFromDate:[NSDate date]];
+    reportDate = [reportDate stringByAppendingString:reportDateStr];
+    [self drawText:reportDate inFrame:rectDateReport formatOption:@"H1" ];
+
+}
 
 
 /*
@@ -173,21 +211,7 @@
     CGMutablePathRef framePath = CGPathCreateMutable();
     CGPathAddRect(framePath, NULL, self.frameRectTitle);
     
-    // Report Reference
-    CGRect testRectTitleRef = CGRectMake(3, 22, 300, 22);
-    NSString* reportRef = @"Report Reference: ";
-
-    [self drawText:reportRef inFrame:testRectTitleRef formatOption:@"H1" ];
     
-    // Report Date
-    CGRect rectDateInv = CGRectMake(350, 22, 300, 22);
-    NSString* reportDate = @"Report Date: ";
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"dd MMMM yyyy"];
-    NSString *reportDateStr = [dateFormat stringFromDate:[NSDate date]];
-    reportDate = [reportDate stringByAppendingString:reportDateStr];
-    [self drawText:reportDate inFrame:rectDateInv formatOption:@"H1" ];
-   
 }
 
 -(void)reportSubTitle{
@@ -385,6 +409,8 @@
     
 }
 
+#pragma mark - 
+#pragma mark DRAW TEXT
 -(void)drawText:(NSString*)textToDraw inFrame:(CGRect)frameRect formatOption:(NSString*)formatString
 {
     if (!textToDraw){
@@ -611,8 +637,32 @@
 }
 
 
-
-
+/*
+-(void)drawLineFromPoint:(CGPoint)from toPoint:(CGPoint)to
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetLineWidth(context, 2.0);
+    
+    // CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+    
+    UIColor *textColor = [UIColor redColor];
+    CGColorRef color = textColor.CGColor;
+    
+    CGContextSetStrokeColorWithColor(context, color);
+    
+    
+    CGContextMoveToPoint(context, from.x, from.y);
+    CGContextAddLineToPoint(context, to.x, to.y);
+    
+    CGContextStrokePath(context);
+    //    CGColorSpaceRelease(colorspace);
+    CGColorRelease(color);
+    
+}
+*/
+#pragma mark -
+#pragma mark Utilities
 - (NSString *) dateToFormattedString:(NSDate*)inDate{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@" MMM dd yyyy"];
@@ -638,28 +688,7 @@
     return ret;
 }
 
--(void)drawLineFromPoint:(CGPoint)from toPoint:(CGPoint)to
-{
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetLineWidth(context, 2.0);
-    
-    // CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-    
-    UIColor *textColor = [UIColor redColor];
-    CGColorRef color = textColor.CGColor;
-    
-    CGContextSetStrokeColorWithColor(context, color);
-    
-    
-    CGContextMoveToPoint(context, from.x, from.y);
-    CGContextAddLineToPoint(context, to.x, to.y);
-    
-    CGContextStrokePath(context);
-    //    CGColorSpaceRelease(colorspace);
-    CGColorRelease(color);
-    
-}
+
 
 
 

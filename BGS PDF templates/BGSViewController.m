@@ -12,7 +12,10 @@
  
 #import "BGSViewController.h"
 
-@interface BGSViewController ()
+@interface BGSViewController (){
+    NSURL * _localRoot;
+
+}
 
 @end
 
@@ -27,6 +30,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    // Clear existing docs - if they exist
+    [self deleteExistingDocs];
 }
 
 - (void)didReceiveMemoryWarning
@@ -157,7 +162,7 @@
     BGSRenderModel1PDF *reportRender = [[BGSRenderModel1PDF alloc]init];
     
     //  [self createPDFfromUIView:[self scrollView] saveToDocumentsWithFileName:@"outputFile"];
-    [reportRender setDoc:[self doc]];
+    [reportRender setDocDetail:[self docDetail]];
     if ([self docAsset]){
         [reportRender setDocAsset:[self docAsset]];
     }else{
@@ -171,11 +176,118 @@
 }
 
 
+#pragma mark - Create Property Doc
+// The demo app uses local directory.  Live apps usually implement iCloud
+- (NSURL *)localRoot {
+    if (_localRoot != nil) {
+        return _localRoot;
+    }
+    
+    NSArray * paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+    _localRoot = [paths objectAtIndex:0];
+    return _localRoot;
+}
+
+// Add at end of "File management methods" section
+- (void)deleteDoc:(NSURL *)docURL {
+    // Wrap in file coordinator
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        NSError* error = nil;
+        
+        NSFileCoordinator* fileCoordinator = [[NSFileCoordinator alloc] initWithFilePresenter:nil];
+        [fileCoordinator coordinateWritingItemAtURL:docURL
+                                            options:NSFileCoordinatorWritingForDeleting
+                                              error:&error
+                                         byAccessor:^(NSURL* writingURL) {
+                                             if (error != nil) {
+                                                 NSLog(@"DEBUG Deleting Error with %@! %@", docURL, error);
+                                                 return;
+                                             }
+                                             NSLog(@"DEBUG Deleting Got writingURL: %@", writingURL);
+                                             // Simple delete
+                                             NSFileManager* fileManager = [[NSFileManager alloc] init];
+                                             [fileManager removeItemAtURL:docURL error:nil];
+                                         }];
+    });
+}
+
+- (void)deleteExistingDocs{
+    // Property
+    NSString *docFilename = [NSString stringWithFormat:@"PropertyDemoDoc.%@",PROPERTY_EXTENSION];
+    NSURL * fileURL = [self.localRoot URLByAppendingPathComponent:docFilename];
+    // If the doc exists remove it
+    [self deleteDoc:fileURL];
+    
+    // Detail
+    docFilename = [NSString stringWithFormat:@"DetailDemoDoc.%@",INVENTORY_EXTENSION];
+    fileURL = [self.localRoot URLByAppendingPathComponent:docFilename];
+    // If the doc exists remove it
+    [self deleteDoc:fileURL];
+    
+
+}
+
+- (void)createtNewDocs
+{
+    NSLog(@"DEBUG createtNewDocs");
+
+    NSString *docFilename = [NSString stringWithFormat:@"PropertyDemoDoc.%@",PROPERTY_EXTENSION];
+    NSURL * fileURL = [self.localRoot URLByAppendingPathComponent:docFilename];
+    // If the doc exists remove it
+
+    // Create new document and save to the filename
+    BGSDocumentProperty * doc = [[BGSDocumentProperty alloc] initWithFileURL:fileURL];
+    doc.debug = NO;
+    [doc setPropertyReference:@"NEW PROPERTY"];
+    [doc setPropertyDocID:[[fileURL lastPathComponent] stringByDeletingPathExtension]];
+    [doc setPropertyPhoto1:[UIImage imageNamed:@"demo1.png"]];
+    
+    [doc saveToURL:fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+        
+        if (!success) {
+            NSLog(@"Failed to create file at %@", fileURL);
+            return;
+        }
+        NSLog(@"File created at %@", fileURL);
+        // Add on the main thread and perform the segue
+        self.docAsset = doc;
+        NSLog(@"DEBUG doc PropertyReference %@", [doc propertyReference]);
+        NSLog(@"DEBUG self.docAsset1 PropertyReference %@", [self.docAsset propertyReference]);
+        // Now create the detail and then Segue
+        [self createtNewDetailDoc];
+    }];
+}
+
+- (void)createtNewDetailDoc
+{
+    NSLog(@"DEBUG createtNewDetailDoc");
+    NSString *docFilename = [NSString stringWithFormat:@"DetailDemoDoc.%@",INVENTORY_EXTENSION];
+    NSURL * fileURL = [self.localRoot URLByAppendingPathComponent:docFilename];
+    // If the doc exists remove it
+    
+    // Create new document and save to the filename
+    BGSDocumentInventory * doc = [[BGSDocumentInventory alloc] initWithFileURL:fileURL];
+    doc.debug = NO;
+    [doc setInventoryReference:@"NEW INVENTORY"];
+    [doc setInventoryDocID:[[fileURL lastPathComponent] stringByDeletingPathExtension]];
+    [doc saveToURL:fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+        if (!success) {
+            NSLog(@"Failed to create file at %@", fileURL);
+            return;
+        }
+        NSLog(@"File created at %@", fileURL);
+        // Add on the main thread and perform the segue
+        self.docDetail = doc;
+        NSLog(@"DEBUG inventoryReference %@", [self.docDetail inventoryReference]);
+        // Segue will not run until document creation complete
+        [self performSegueWithIdentifier:@"Report Output" sender:self];
+    }];
+}
 
 
 #pragma mark - Button Action
 
 - (IBAction)outputAction:(id)sender {
-    [self performSegueWithIdentifier:@"Report Output" sender:self];
+    [self createtNewDocs];
 }
 @end
