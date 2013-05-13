@@ -152,12 +152,12 @@
     [self drawText:reportRef inFrame:rectTitleRef formatOption:@"H1" ];
     
     // Report Detail Reference
-    CGRect rectDetailRef = CGRectMake((self.framePage.origin.x +3),(rectTitleRef.origin.y + 25), 300, 22);
-    NSString* detailRef = @"Report Detail Ref: ";
-    if([self.docDetail  inventoryReference]){
-        detailRef = [detailRef stringByAppendingString:[self.docDetail  inventoryReference]];
+    CGRect rectReportType = CGRectMake((self.framePage.origin.x +3),(rectTitleRef.origin.y + 25), 300, 22);
+    NSString* reportType = @"Report Type: ";
+    if([self.docDetail  inventoryType]){
+        reportType = [reportType stringByAppendingString:[self.docDetail  inventoryReference]];
     }
-    [self drawText:detailRef inFrame:rectDetailRef formatOption:@"H1" ];
+    [self drawText:reportType inFrame:rectReportType formatOption:@"H1" ];
     
     // Report Date
     _yOffSetPage1Header = _yOffSetPage1Header + 25;
@@ -170,10 +170,19 @@
     reportDate = [reportDate stringByAppendingString:reportDateStr];
     [self drawText:reportDate inFrame:rectDateReport formatOption:@"H1" ];
     
+    // Property Address
+     _yOffSetPage1Header = _yOffSetPage1Header + 25;
+    CGRect rectPropertyAddress = CGRectMake((self.framePage.origin.x +3),(rectReportType.origin.y + 25), 300, 22);
+    NSString* propertyAddress = @"Address: ";
+    if([self.docAsset  propertyAddress]){
+        propertyAddress = [propertyAddress stringByAppendingString:[self.docAsset.propertyAddress fullPropertyAddress]];
+    }
+    [self drawText:propertyAddress inFrame:rectPropertyAddress formatOption:@"H1" ];
+    
     // Report Page 1 Body Photo.
     // Create a 300 * 300 box
     int photoBoxX = (self.framePage.size.width - 300) /2;
-    _yOffSetPage1Header = _yOffSetPage1Header + 75;
+    _yOffSetPage1Header = _yOffSetPage1Header + 25;
 
     CGRect rectPage1MainPhoto = CGRectMake(photoBoxX,(self.framePage.origin.y + _yOffSetPage1Header), 300, 300);
     UIImage *photo1;
