@@ -33,7 +33,10 @@
     UIGraphicsBeginPDFContextToData(pdfData,CGRectZero, nil);
     
     // Mark the beginning of a new page.
+    // US Letter
     UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, 612, 792), nil);
+    
+#warning Need to internationalise to use A4 (595 * 842) OR US Letter (612 * 792) - in Postscript Points
     
     // Get the graphics context.
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
