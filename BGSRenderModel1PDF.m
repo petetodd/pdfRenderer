@@ -13,7 +13,8 @@
     int _yOffSetPage1Header;
     int _yOffSetPage1Footer;
     int _yOffSet;
-
+    int _xOffSet; // Used in aligning hozizontal objects
+    CGRect _tmpImageFrame;
 }
 
 -(void)configureDataObjects{
@@ -172,7 +173,7 @@
     // Report Page 1 Body Photo.
     // Create a 300 * 300 box
     int photoBoxX = (self.framePage.size.width - 300) /2;
-    _yOffSetPage1Header = _yOffSetPage1Header + 50;
+    _yOffSetPage1Header = _yOffSetPage1Header + 75;
 
     CGRect rectPage1MainPhoto = CGRectMake(photoBoxX,(self.framePage.origin.y + _yOffSetPage1Header), 300, 300);
     UIImage *photo1;
@@ -185,8 +186,41 @@
     [self drawPhotoInRect:rectPage1MainPhoto drawPhoto:photo1];
     
 
-
     
+    // Secondary Imagees  0-5 in 50 * 50 frames (scaled)
+    // Create an arrary of images
+    NSMutableArray *imageArray = [[NSMutableArray alloc]init];
+    if  ([self.docAsset propertyPhoto2]){
+        [imageArray addObject:[self.docAsset propertyPhoto2]];
+    }
+    if  ([self.docAsset propertyPhoto3]){
+        [imageArray addObject:[self.docAsset propertyPhoto3]];
+    }
+    if  ([self.docAsset propertyPhoto4]){
+        [imageArray addObject:[self.docAsset propertyPhoto4]];
+    }
+    if  ([self.docAsset propertyPhoto5]){
+        [imageArray addObject:[self.docAsset propertyPhoto5]];
+    }
+    if  ([self.docAsset propertyPhoto6]){
+        [imageArray addObject:[self.docAsset propertyPhoto6]];
+    }
+    
+    _yOffSetPage1Header = _yOffSetPage1Header + (_tmpImageFrame.size.height) + 75;
+    int intC = 75;
+    // X Coordinate will depend on number of images and size of frame used to draw main image
+    photoBoxX = (self.framePage.size.width / 2) - ((intC *imageArray.count) / 2);
+    
+    
+    //(self.framePage.size.width - ((intC *imageArray.count) +(imageArray.count * 10))) /2;
+    
+    for (int i =0; i <imageArray.count; i++) {
+        UIImage *tmpImage = (UIImage*) [imageArray objectAtIndex:i];
+        CGRect rectSubPhoto = CGRectMake(photoBoxX,(self.framePage.origin.y + _yOffSetPage1Header), 75, 75);
+        [self drawPhotoInRect:rectSubPhoto drawPhoto:tmpImage];
+        // give a 3 pixel margin
+        photoBoxX = photoBoxX + _tmpImageFrame.size.width + 20;
+    }   
     
 }
 
@@ -204,6 +238,8 @@
 
     
     [photoToDraw drawInRect:imageFrame];
+    _tmpImageFrame = imageFrame;
+
   
     
 }

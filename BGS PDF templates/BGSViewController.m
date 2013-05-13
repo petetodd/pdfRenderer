@@ -241,6 +241,13 @@
     [doc setPropertyReference:@"NEW PROPERTY"];
     [doc setPropertyDocID:[[fileURL lastPathComponent] stringByDeletingPathExtension]];
     [doc setPropertyPhoto1:[UIImage imageNamed:@"demo1.png"]];
+    [doc setPropertyPhoto2:[UIImage imageNamed:@"demo2.png"]];
+    [doc setPropertyPhoto3:[UIImage imageNamed:@"demo3.png"]];
+    [doc setPropertyPhoto4:[UIImage imageNamed:@"demo4.png"]];
+    [doc setPropertyPhoto5:[UIImage imageNamed:@"demo5.png"]];
+    [doc setPropertyPhoto6:[UIImage imageNamed:@"demo6.png"]];
+    
+    
     
     [doc saveToURL:fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
         
