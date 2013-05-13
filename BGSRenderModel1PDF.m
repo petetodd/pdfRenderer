@@ -159,7 +159,8 @@
     [self drawText:detailRef inFrame:rectDetailRef formatOption:@"H1" ];
     
     // Report Date
-    CGRect rectDateReport = CGRectMake((self.framePage.origin.x +403),(self.framePage.origin.y + _yOffSetPage1Header + 25), 200, 22);
+    _yOffSetPage1Header = _yOffSetPage1Header + 25;
+    CGRect rectDateReport = CGRectMake((self.framePage.origin.x +403),(self.framePage.origin.y + _yOffSetPage1Header), 200, 22);
     
     NSString* reportDate = @"Report Date: ";
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -167,7 +168,44 @@
     NSString *reportDateStr = [dateFormat stringFromDate:[NSDate date]];
     reportDate = [reportDate stringByAppendingString:reportDateStr];
     [self drawText:reportDate inFrame:rectDateReport formatOption:@"H1" ];
+    
+    // Report Page 1 Body Photo.
+    // Create a 300 * 300 box
+    int photoBoxX = (self.framePage.size.width - 300) /2;
+    _yOffSetPage1Header = _yOffSetPage1Header + 50;
 
+    CGRect rectPage1MainPhoto = CGRectMake(photoBoxX,(self.framePage.origin.y + _yOffSetPage1Header), 300, 300);
+    UIImage *photo1;
+    if([self.docAsset  propertyPhoto1]){
+        photo1 = [self.docAsset  propertyPhoto1];
+    }else{
+        // Default image
+        photo1 = [UIImage imageNamed:@"defaultPhoto1.png"];
+    }
+    [self drawPhotoInRect:rectPage1MainPhoto drawPhoto:photo1];
+    
+
+
+    
+    
+}
+
+- (void)drawPhotoInRect:(CGRect)photoRect drawPhoto:(UIImage*)photoToDraw{
+    
+  //  UIImageView *iv; // your image view
+    CGSize imageSize = photoToDraw.size;
+    CGFloat imageScale = fminf(photoRect.size.width/imageSize.width, photoRect.size.height/imageSize.height);
+    CGSize scaledImageSize = CGSizeMake(imageSize.width*imageScale, imageSize.height*imageScale);
+    // The scaling should ensure the image does not fall outside the bounding CGRECT
+    float revisedXOrigin = photoRect.origin.x + ((scaledImageSize.width - photoRect.size.width)/2);
+    float revisedYOrigin = photoRect.origin.y - ((scaledImageSize.height - photoRect.size.height)/2);
+
+    CGRect imageFrame = CGRectMake(revisedXOrigin, revisedYOrigin, scaledImageSize.width, scaledImageSize.height);
+
+    
+    [photoToDraw drawInRect:imageFrame];
+  
+    
 }
 
 

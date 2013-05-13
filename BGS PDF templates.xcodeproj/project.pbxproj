@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D003B8381740F5C60030516E /* defaultPhoto1.png in Resources */ = {isa = PBXBuildFile; fileRef = D003B8371740F5C60030516E /* defaultPhoto1.png */; };
 		D07FDC82173A8AE700AE83C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07FDC81173A8AE700AE83C8 /* UIKit.framework */; };
 		D07FDC84173A8AE700AE83C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07FDC83173A8AE700AE83C8 /* Foundation.framework */; };
 		D07FDC86173A8AE700AE83C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07FDC85173A8AE700AE83C8 /* CoreGraphics.framework */; };
@@ -57,6 +58,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D003B8371740F5C60030516E /* defaultPhoto1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultPhoto1.png; sourceTree = "<group>"; };
 		D07FDC7E173A8AE700AE83C8 /* PDF DOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PDF DOC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07FDC81173A8AE700AE83C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D07FDC83173A8AE700AE83C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -314,6 +316,7 @@
 		D0EDF1B3173BE1FD0041AF56 /* Property Photos */ = {
 			isa = PBXGroup;
 			children = (
+				D003B8371740F5C60030516E /* defaultPhoto1.png */,
 				D0EDF1B4173BE33C0041AF56 /* demo1.png */,
 				D0EDF1B5173BE33C0041AF56 /* demo2.png */,
 				D0EDF1B6173BE33C0041AF56 /* demo3.png */,
@@ -400,6 +403,7 @@
 				D0EDF1B7173BE33C0041AF56 /* demo1.png in Resources */,
 				D0EDF1B8173BE33C0041AF56 /* demo2.png in Resources */,
 				D0EDF1B9173BE33C0041AF56 /* demo3.png in Resources */,
+				D003B8381740F5C60030516E /* defaultPhoto1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
