@@ -121,6 +121,21 @@
     CGContextAddLineToPoint(currentContext, self.framePage.size.width, (self.framePage.origin.y + _yOffSetPage1Header));
     // CGContextStrokePath also clears path after drawing
     CGContextStrokePath(currentContext);
+    
+    UIImage *logo1;
+    CGRect rectLogo = CGRectMake((self.framePage.origin.x +0.5),self.framePage.origin.y, 602, 150);
+
+    if([self.docCompany  companyLogo]){
+        logo1 = [self.docCompany  companyLogo];
+    }else{
+        // Default image
+        logo1 = [UIImage imageNamed:@"defaultPhoto1.png"];
+    }
+    [self drawPhotoInRect:rectLogo drawPhoto:logo1];
+    
+
+    
+    
 }
 
 // Create a page 1 footer frame

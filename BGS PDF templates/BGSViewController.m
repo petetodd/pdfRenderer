@@ -168,6 +168,13 @@
     }else{
         [reportRender setDocAsset:Nil];
     }
+    if ([self docCompany]){
+        [reportRender setDocCompany:[self docCompany]];
+    }else{
+        [reportRender setDocCompany:Nil];
+    }
+    
+    
     [reportRender configureDataObjects];
     
     
@@ -176,7 +183,7 @@
 }
 
 
-#pragma mark - Create Property Doc
+#pragma mark - Delete and Create Docs for testing
 // The demo app uses local directory.  Live apps usually implement iCloud
 - (NSURL *)localRoot {
     if (_localRoot != nil) {
@@ -224,6 +231,12 @@
     // If the doc exists remove it
     [self deleteDoc:fileURL];
     
+    // Company
+    docFilename = [NSString stringWithFormat:@"CompanyDemoDoc.%@",COMPANY_EXTENSION];
+    fileURL = [self.localRoot URLByAppendingPathComponent:docFilename];
+    // If the doc exists remove it
+    [self deleteDoc:fileURL];
+    
 
 }
 
@@ -262,6 +275,7 @@
         NSLog(@"DEBUG self.docAsset1 PropertyReference %@", [self.docAsset propertyReference]);
         // Now create the detail and then Segue
         [self createtNewDetailDoc];
+        [self createtNewCompanyDoc];
     }];
 }
 
@@ -285,6 +299,33 @@
         NSLog(@"File created at %@", fileURL);
         // Add on the main thread and perform the segue
         self.docDetail = doc;
+        NSLog(@"DEBUG inventoryReference %@", [self.docDetail inventoryReference]);
+        // Segue will not run until document creation complete
+  //      [self performSegueWithIdentifier:@"Report Output" sender:self];
+    }];
+}
+
+- (void)createtNewCompanyDoc
+{
+    NSLog(@"DEBUG createtNewCompanyDoc");
+    NSString *docFilename = [NSString stringWithFormat:@"CompanyDemoDoc.%@",COMPANY_EXTENSION];
+    NSURL * fileURL = [self.localRoot URLByAppendingPathComponent:docFilename];
+    // If the doc exists remove it
+    
+    // Create new document and save to the filename
+    BGSDocumentCompany * doc = [[BGSDocumentCompany alloc] initWithFileURL:fileURL];
+    doc.debug = NO;
+    [doc setCompanyEmail:@"peter@brightgreenstar.com"];
+    [doc setCompanyName:@"The Big Fish People"];
+    [doc setCompanyLogo:[UIImage imageNamed:@"demo_logo_header.png"]];
+    [doc saveToURL:fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+        if (!success) {
+            NSLog(@"Failed to create file at %@", fileURL);
+            return;
+        }
+        NSLog(@"File created at %@", fileURL);
+        // Add on the main thread and perform the segue
+        self.docCompany = doc;
         NSLog(@"DEBUG inventoryReference %@", [self.docDetail inventoryReference]);
         // Segue will not run until document creation complete
         [self performSegueWithIdentifier:@"Report Output" sender:self];

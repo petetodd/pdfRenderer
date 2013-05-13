@@ -10,6 +10,7 @@
 #import <CoreText/CoreText.h>
 #import "BGSDocumentProperty.h"
 #import "BGSDocumentInventory.h"
+#import "BGSDocumentCompany.h"
 
 @interface BGSRenderModel1PDF : NSObject
 
@@ -20,6 +21,8 @@
 @property (strong, nonatomic) BGSDocumentProperty * docAsset;
 // docDetails contains multiple page detail information that we want to print including variable length text
 @property (strong, nonatomic) BGSDocumentInventory * docDetail;
+// docCompany holds the company data
+@property (strong, nonatomic) BGSDocumentCompany * docCompany;
 
 
 @property CGRect framePage;
