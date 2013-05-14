@@ -25,6 +25,8 @@
 #define kCompanyTel @"CompanyTel"
 #define kCompanyMobile @"CompanyMobile"
 #define kCompanyEmail @"CompanyEmail"
+#define kCompanyWWW @"CompanyWWW"
+
 
 - (void) encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeInt:1 forKey:kVersionKey];
@@ -62,6 +64,11 @@
     NSData *companyEmail = [self.companyEmail
                                   dataUsingEncoding:NSUTF8StringEncoding];
     [encoder encodeObject:companyEmail forKey:kCompanyEmail];
+    
+    NSData *companyWWW = [self.companyWWW
+                            dataUsingEncoding:NSUTF8StringEncoding];
+    [encoder encodeObject:companyWWW forKey:kCompanyWWW];
+    
     
     // Address
     
@@ -124,6 +131,16 @@
                                        initWithData:companyEmail
                                        encoding:NSUTF8StringEncoding];
     [self setCompanyMobile:decodedCompanyEmail];
+    
+    NSData *companyWWW = [decoder decodeObjectForKey:kCompanyWWW];
+    NSString *decodedCompanyWWW  = [[NSString alloc]
+                                      initWithData:companyWWW
+                                      encoding:NSUTF8StringEncoding];
+    [self setCompanyWWW:decodedCompanyWWW];
+    
+    
+    
+    
     
     return self;  
 }

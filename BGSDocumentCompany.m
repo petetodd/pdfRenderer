@@ -190,6 +190,15 @@
     self.data.companyEmail = companyEmail;
 }
 
+- (NSString *)companyWWW {
+    return self.data.companyWWW;
+}
+- (void)setCompanyWWW:(NSString *)companyWWW{
+    
+    if ([self.data.companyWWW isEqual:companyWWW]) return;
+    self.data.companyWWW = companyWWW;
+}
+
 
 
 @end

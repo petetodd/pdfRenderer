@@ -10,11 +10,12 @@
 #import "BGSDocumentProperty.h"
 #import "BGSDocumentInventory.h"
 #import "BGSDocumentCompany.h"
+#import "BGSAddressData.h"
 // Print and Email selector
 #import "BGSOutputTVC.h"
 
 // Renderers
-#import "BGSRenderModel1PDF.h"
+#import "BGSRenderModel2.h"
 
 // Email
 #import<MessageUI/MessageUI.h>

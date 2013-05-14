@@ -159,7 +159,9 @@
     }
  */
     
-    BGSRenderModel1PDF *reportRender = [[BGSRenderModel1PDF alloc]init];
+ //   BGSRenderModel1PDF *reportRender = [[BGSRenderModel1PDF alloc]init];
+    BGSRenderModel2 *reportRender =[[BGSRenderModel2 alloc]init];
+    
     
     //  [self createPDFfromUIView:[self scrollView] saveToDocumentsWithFileName:@"outputFile"];
     [reportRender setDocDetail:[self docDetail]];
@@ -260,6 +262,14 @@
     [doc setPropertyPhoto5:[UIImage imageNamed:@"demo5.png"]];
     [doc setPropertyPhoto6:[UIImage imageNamed:@"demo6.png"]];
     
+    BGSAddressData *testAddress = [[BGSAddressData alloc]init];
+    [testAddress setAddress1_number:@"Ostia Antica"];
+    [testAddress setAddress2_street:@"717 Via dei Romagnoli"];
+    [testAddress setAddress3_city:@"Rome"];
+    [testAddress setAddress5_state:@"Italy"];
+    [doc setPropertyAddress:testAddress];
+
+    
     
     
     [doc saveToURL:fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
@@ -290,6 +300,7 @@
     BGSDocumentInventory * doc = [[BGSDocumentInventory alloc] initWithFileURL:fileURL];
     doc.debug = NO;
     [doc setInventoryReference:@"NEW INVENTORY"];
+    [doc setInventoryType:@"Test PDF generation and Email Attachment Functions"];
     [doc setInventoryDocID:[[fileURL lastPathComponent] stringByDeletingPathExtension]];
     [doc saveToURL:fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
         if (!success) {
@@ -315,9 +326,17 @@
     // Create new document and save to the filename
     BGSDocumentCompany * doc = [[BGSDocumentCompany alloc] initWithFileURL:fileURL];
     doc.debug = NO;
-    [doc setCompanyEmail:@"peter@brightgreenstar.com"];
-    [doc setCompanyName:@"The Big Fish People"];
+    [doc setCompanyWWW:@"www.petertodd.com"];
+    [doc setCompanyEmail:@"peter@petertodd.com"];
+    [doc setCompanyName:@"Bright Green Star"];
+    [doc setCompanyStrapline:@"Will work for Fish"];
     [doc setCompanyLogo:[UIImage imageNamed:@"demo_logo_header.png"]];
+    BGSAddressData *testAddress = [[BGSAddressData alloc]init];
+    [testAddress setAddress1_number:@"Ostia Antica"];
+    [testAddress setAddress2_street:@"717 Via dei Romagnoli"];
+    [testAddress setAddress3_city:@"Rome"];
+    [testAddress setAddress5_state:@"Italy"];
+    [doc setCompanyAddress:testAddress];
     [doc saveToURL:fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
         if (!success) {
             NSLog(@"Failed to create file at %@", fileURL);

@@ -28,6 +28,8 @@
 @property (strong, nonatomic) NSString *companyTel;
 @property (strong, nonatomic) NSString *companyMobile;
 @property (strong, nonatomic) NSString *companyEmail;
+@property (strong, nonatomic) NSString *companyWWW;
+
 
 
 
